@@ -1,0 +1,50 @@
+<form>
+
+
+
+    <div class="form-group">
+        <div class="input-group">
+            <div class="input-group-text bg-white">
+                <i class="fa fa-search"></i>
+            </div>
+            <input type="text" name="filtrar" class="form-control" placeholder="Buscar" [(ngModel)]="gestionCotizacionService.filtroCotizacion">
+        </div>
+    </div>
+
+</form>
+<table class=" table table-hover ">
+    <thead>
+        <tr>
+            <th scope="col ">NombreEmpresa</th>
+            <th scope="col ">CC_NIT</th>
+            <th scope="col ">NumeroTelefono</th>
+            <th scope="col ">ValorProducto</th>
+            <th scope="col ">NombreProducto</th>
+            <th scope="col ">Departameto</th>
+            <th scope="col ">Municipio</th>
+            <th scope="col ">Direccion</th>
+            <th scope="col ">NombreAsesor</th>
+            <th scope="col ">CorreoAsesor</th>
+            <th scope="col "> Comentarios </th>
+
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let cotizacion of gestionCotizacionService.listaCotizacion|filtroCotizacion:'NombreEmpresa':gestionCotizacionService.filtroCotizacion ">
+            <td (click)="llenarFormularioCotizacion(cotizacion) ">{{cotizacion.NombreEmpresa}}</td>
+            <td (click)="llenarFormularioCotizacion(cotizacion) ">{{cotizacion.CC_NIT}}</td>
+            <td (click)="llenarFormularioCotizacion(cotizacion) ">{{cotizacion.NumeroTelefono}}</td>
+            <td (click)="llenarFormularioCotizacion(cotizacion) ">{{cotizacion.ValorProducto}}</td>
+            <td (click)="llenarFormularioCotizacion(cotizacion) ">{{cotizacion.NombreProducto}}</td>
+            <td (click)="llenarFormularioCotizacion(cotizacion) ">{{cotizacion.Departameto}}</td>
+            <td (click)="llenarFormularioCotizacion(cotizacion) ">{{cotizacion.Municipio}}</td>
+            <td (click)="llenarFormularioCotizacion(cotizacion) ">{{cotizacion.Direccion}}</td>
+            <td (click)="llenarFormularioCotizacion(cotizacion) ">{{cotizacion.NombreAsesor}}</td>
+            <td (click)="llenarFormularioCotizacion(cotizacion) ">{{cotizacion.CorreoAsesor}}</td>
+            <td (click)="llenarFormularioCotizacion(cotizacion) ">{{cotizacion.Comentarios}}</td>
+            <td>
+                <i (click)="this.eliminarCotizacion(cotizacion.IdCotizacion) " class="fa fa-trash fa-lg text-danger "></i>
+            </td>
+
+    </tbody>
+</table>

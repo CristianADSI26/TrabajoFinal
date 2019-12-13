@@ -1,0 +1,687 @@
+<form [formGroup]="this.gestionInspeccionService.formularioRegistroInspeccion" (ngSubmit)="onSubmit()">
+
+    <!--Nombre-->
+    <div class="form-group">
+        <div class="input-group">
+            <div class="input-group-prepend">
+                <div class="input-group-text bg-white">
+                    <i class="fa fa-user-circle" [class.green-icon]="this.gestionInspeccionService.Nombre.valid" [class.red-icon]="this.gestionInspeccionService.Nombre.invalid && this.gestionInspeccionService.Nombre.touched"></i>
+                </div>
+
+            </div>
+            <input type="hidden" formControlName="IdInspeccion" name="IdInspeccion">
+            <input name="Nombre" formControlName="Nombre" class="form-control" placeholder="Nombre">
+
+        </div>
+
+        <!--Mensaje De Error-->
+
+        <div *ngIf="this.gestionInspeccionService.Nombre.invalid && (this.gestionInspeccionService.Nombre.touched || this.gestionInspeccionService.Nombre.dirty)" class="alert alert-danger">
+            <div *ngIf="this.gestionInspeccionService.Nombre.hasError('required')">
+                El Nombre es Obligatorio
+            </div>
+            <div *ngIf="this.gestionInspeccionService.Nombre.hasError('pattern')">
+                El nombre solo deben contener letras
+            </div>
+        </div>
+
+    </div>
+
+    <!--Apellidos-->
+    <div class="form-group">
+        <div class="input-group">
+            <div class="input-group-prepend">
+                <div class="input-group-text bg-white">
+                    <i class="fa fa-user-circle" [class.green-icon]="this.gestionInspeccionService.Apellido.valid" [class.red-icon]="this.gestionInspeccionService.Apellido.invalid && this.gestionInspeccionService.Apellido.touched"></i>
+                </div>
+
+            </div>
+
+
+            <input name="Apellido" formControlName="Apellido" class="form-control" placeholder="Apellido">
+
+        </div>
+        <!--Mensajes de error-->
+
+        <div *ngIf="this.gestionInspeccionService.Apellido.invalid && (this.gestionInspeccionService.Apellido.touched || this.gestionInspeccionService.Apellido.dirty)" class="alert alert-danger">
+
+            <div *ngIf="this.gestionInspeccionService.Apellido.hasError('required')">
+                El Apellido es requeridos
+            </div>
+            <div *ngIf="this.gestionInspeccionService.Apellido.hasError('pattern')">
+                Los Apellidos solo deben contener letras
+            </div>
+
+        </div>
+
+    </div>
+
+    <!--Documento De Identificacion-->
+    <div class="form-group">
+        <div class="input-group">
+            <div class="input-group-prepend">
+                <div class="input-group-text bg-white">
+                    <i class="fa fa-drivers-license" [class.green-icon]="this.gestionInspeccionService.DocumentoIdentificacion.valid" [class.red-icon]="this.gestionInspeccionService.DocumentoIdentificacion.invalid && this.gestionInspeccionService.DocumentoIdentificacion.touched"></i>
+                </div>
+
+            </div>
+
+            <input name="DocumentoIdentificacion" formControlName="DocumentoIdentificacion" class="form-control" placeholder="Documento de Identificacion">
+
+        </div>
+
+        <!--Mensajes de error-->
+
+        <div *ngIf="this.gestionInspeccionService.DocumentoIdentificacion.invalid && (this.gestionInspeccionService.DocumentoIdentificacion.touched || this.gestionInspeccionService.DocumentoIdentificacion.dirty)" class="alert alert-danger">
+
+            <div *ngIf="this.gestionInspeccionService.DocumentoIdentificacion.hasError('required')">
+                El Documento de Identificacion es Requerido
+            </div>
+            <div *ngIf="this.gestionInspeccionService.DocumentoIdentificacion.hasError('minlength')">
+                El Documento de Identificacion debe tener minimo 5 caracteres
+            </div>
+
+            <div *ngIf="this.gestionInspeccionService.DocumentoIdentificacion.hasError('maxlength')">
+                El Documento de Identificacion debe tener maximo 15 caracteres
+            </div>
+
+            <div *ngIf="this.gestionInspeccionService.DocumentoIdentificacion.hasError('pattern')">
+                El Documento de Identificacion debe contener solo numeros
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!--Telefono-->
+
+    <div class=" form-group ">
+        <div class="input-group ">
+            <div class="input-group-prepend ">
+                <div class="input-group-text bg-white ">
+                    <i class="fa fa-mobile " [class.green-icon]="this.gestionInspeccionService.Telefono.valid" [class.red-icon]="this.gestionInspeccionService.Telefono.invalid && this.gestionInspeccionService.Telefono.touched"></i>
+                </div>
+
+            </div>
+
+
+            <input name="Telefono" class="form-control" formControlName="Telefono" placeholder=" Numero de Telefono *">
+        </div>
+        <div *ngIf="this.gestionInspeccionService.Telefono.invalid && (this.gestionInspeccionService.Telefono.touched || this.gestionInspeccionService.Telefono.dirty)" class="alert alert-danger">
+
+            <div *ngIf="this.gestionInspeccionService.Telefono.hasError('required')">
+                El teléfono es requerido
+            </div>
+            <div *ngIf="this.gestionInspeccionService.Telefono.hasError('minlength')">
+                El telefono debe tener minimo 5 caracteres
+            </div>
+
+            <div *ngIf="this.gestionInspeccionService.Telefono.hasError('maxlength')">
+                El telefono debe tener maximo 10 caracteres
+            </div>
+
+            <div *ngIf="this.gestionInspeccionService.Telefono.hasError('pattern')">
+                El telefono debe contener solo numeros
+            </div>
+
+        </div>
+    </div>
+
+
+
+
+    <!--Direccion-->
+
+    <div class="form-group ">
+        <div class="input-group">
+            <div class="input-group-prepend">
+                <div class="input-group-text bg-white">
+                    <i class="fa fa-home" [class.green-icon]="this.gestionInspeccionService.Direccion.valid" [class.red-icon]="this.gestionInspeccionService.Direccion.invalid && this.gestionInspeccionService.Direccion.touched"></i>
+                </div>
+
+            </div>
+
+            <input name="Direccion" formControlName="Direccion" class="form-control" placeholder="Dirección">
+
+        </div>
+
+        <!--Mensajes de error-->
+
+        <div *ngIf="this.gestionInspeccionService.Direccion.invalid && (this.gestionInspeccionService.Direccion.touched || this.gestionInspeccionService.Direccion.dirty)" class="alert alert-danger">
+
+            <div *ngIf="this.gestionInspeccionService.Direccion.hasError('required')">
+                La dirección es requerida
+            </div>
+            <div *ngIf="this.gestionInspeccionService.Direccion.hasError('maxlength')">
+                La dirección debe tener maximo 40 caracteres
+            </div>
+
+
+        </div>
+
+    </div>
+
+    <div class="row"></div>
+
+
+    <!--Municipio-->
+    <div class="form-group">
+        <div class="input-group">
+            <div class="input-group-prepend">
+                <div class="input-group-text bg-white">
+                    <i class="fa fa-map-marker" [class.green-icon]="this.gestionInspeccionService.Municipio.valid" [class.red-icon]="this.gestionInspeccionService.Municipio.invalid && this.gestionInspeccionService.Municipio.touched"></i>
+                </div>
+
+            </div>
+
+
+            <input name="Municipio" formControlName="Municipio" class="form-control" placeholder="Municipio">
+
+        </div>
+
+        <!--Mensajes de error-->
+
+        <div *ngIf="this.gestionInspeccionService.Municipio.invalid && (this.gestionInspeccionService.Municipio.touched || this.gestionInspeccionService.Municipio.dirty)" class="alert alert-danger">
+
+            <div *ngIf="this.gestionInspeccionService.Municipio.hasError('required')">
+                El Municipio es Requerido
+            </div>
+            <div *ngIf="this.gestionInspeccionService.Municipio.hasError('pattern')">
+                El Municipio solo deben contener letras
+            </div>
+
+        </div>
+
+    </div>
+
+    <!--Producto-->
+    <div class="form-group">
+        <div class="input-group">
+            <div class="input-group-prepend">
+                <div class="input-group-text bg-white">
+                    <i class="fa fa-product-hunt" [class.green-icon]="this.gestionInspeccionService.Producto.valid" [class.red-icon]="this.gestionInspeccionService.Producto.invalid && this.gestionInspeccionService.Municipio.touched"></i>
+                </div>
+
+            </div>
+
+            <input name="Producto" formControlName="Producto" class="form-control" placeholder="Producto">
+
+        </div>
+
+        <!--Mensajes de error-->
+
+        <div *ngIf="this.gestionInspeccionService.Producto.invalid && (this.gestionInspeccionService.Producto.touched || this.gestionInspeccionService.Producto.dirty)" class="alert alert-danger">
+
+            <div *ngIf="this.gestionInspeccionService.Producto.hasError('required')">
+                El Producto es requerido
+            </div>
+            <div *ngIf="this.gestionInspeccionService.Producto.hasError('pattern')">
+                El Producto solo deben contener letras
+            </div>
+
+        </div>
+    </div>
+
+    <!--Planta Electrica-->
+    <div class="form-group">
+        <div class="input-group">
+            <div class="input-group-prepend">
+                <div class="input-group-text bg-white">
+                    <i class="fa fa-bolt" [class.green-icon]="this.gestionInspeccionService.PlantaElectrica.valid" [class.red-icon]="this.gestionInspeccionService.PlantaElectrica.invalid && this.gestionInspeccionService.PlantaElectrica.touched"></i>
+                </div>
+
+            </div>
+
+            <input name="PlantaElectrica" formControlName="PlantaElectrica" class="form-control" placeholder="Planta Electrica">
+
+        </div>
+        <!--Mensajes de error-->
+
+        <div *ngIf="this.gestionInspeccionService.PlantaElectrica.invalid && (this.gestionInspeccionService.PlantaElectrica.touched || this.gestionInspeccionService.PlantaElectrica.dirty)" class="alert alert-danger">
+
+            <div *ngIf="this.gestionInspeccionService.PlantaElectrica.hasError('required')">
+                La Planta Electrica es requerida
+            </div>
+            <div *ngIf="this.gestionInspeccionService.PlantaElectrica.hasError('pattern')">
+                La planta Electrica solo debe contener letras
+            </div>
+
+        </div>
+
+    </div>
+
+    <!--Tipo de vehiculo-->
+    <div class="form-group">
+        <div class="input-group">
+            <div class="input-group-prepend">
+                <div class="input-group-text bg-white">
+                    <i class="fa fa-truck" [class.green-icon]="this.gestionInspeccionService.TipoVehiculo.valid" [class.red-icon]="this.gestionInspeccionService.TipoVehiculo.invalid && this.gestionInspeccionService.TipoVehiculo.touched"></i>
+                </div>
+
+            </div>
+
+            <input name="TipoVehiculo" formControlName="TipoVehiculo" class="form-control" placeholder="Tipo de Vehiculo">
+
+        </div>
+        <!--Mensajes de error-->
+
+        <div *ngIf="this.gestionInspeccionService.TipoVehiculo.invalid && (this.gestionInspeccionService.TipoVehiculo.touched || this.gestionInspeccionService.TipoVehiculo.dirty)" class="alert alert-danger">
+
+            <div *ngIf="this.gestionInspeccionService.TipoVehiculo.hasError('required')">
+                El tipo de vehiculo es requerido
+            </div>
+            <div *ngIf="this.gestionInspeccionService.TipoVehiculo.hasError('pattern')">
+                El tipo de vehiculo solo debe contener letras
+            </div>
+
+        </div>
+
+    </div>
+
+    <!--Condiciones de terreno-->
+    <div class="form-group">
+        <div class="input-group">
+            <div class="input-group-prepend">
+                <div class="input-group-text bg-white">
+                    <i class="fa fa-user-circle" [class.green-icon]="this.gestionInspeccionService.CondicionesTerreno.valid" [class.red-icon]="this.gestionInspeccionService.CondicionesTerreno.invalid && this.gestionInspeccionService.CondicionesTerreno.touched"></i>
+                </div>
+
+            </div>
+
+            <input name="CondicionesTerreno" formControlName="CondicionesTerreno" class="form-control" placeholder="Condiciones de Terreno">
+
+        </div>
+        <!--Mensajes de error-->
+
+        <div *ngIf="this.gestionInspeccionService.CondicionesTerreno.invalid && (this.gestionInspeccionService.CondicionesTerreno.touched || this.gestionInspeccionService.CondicionesTerreno.dirty)" class="alert alert-danger">
+
+            <div *ngIf="this.gestionInspeccionService.CondicionesTerreno.hasError('required')">
+                Las Condiciones de Terreno son requeridos
+            </div>
+            <div *ngIf="this.gestionInspeccionService.CondicionesTerreno.hasError('pattern')">
+                Las condiciones de terreno solo deben contener letras
+            </div>
+
+        </div>
+
+    </div>
+
+    <!--Conexiones Electricas-->
+    <div class="form-group">
+        <div class="input-group">
+            <div class="input-group-prepend">
+                <div class="input-group-text bg-white">
+                    <i class="fa fa-bolt" [class.green-icon]="this.gestionInspeccionService.ConexionesElectricas.valid" [class.red-icon]="this.gestionInspeccionService.CondicionesTerreno.invalid && this.gestionInspeccionService.CondicionesTerreno.touched"></i>
+
+                </div>
+
+                <input name="ConexionesElectricas" formControlName="ConexionesElectricas" class="form-control" placeholder="Conexiones Electricas">
+
+            </div>
+            <!--Mensajes de error-->
+
+            <div *ngIf="this.gestionInspeccionService.ConexionesElectricas.invalid && (this.gestionInspeccionService.ConexionesElectricas.touched || this.gestionInspeccionService.ConexionesElectricas.dirty)" class="alert alert-danger">
+
+                <div *ngIf="this.gestionInspeccionService.ConexionesElectricas.hasError('required')">
+                    Las Conexiones Electricas son requeridas
+                </div>
+                <div *ngIf="this.gestionInspeccionService.ConexionesElectricas.hasError('pattern')">
+                    Las conexiones electricas solo deben contener letras
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+    <!--Tecnico Requerido-->
+    <div class="form-group">
+        <div class="input-group">
+            <div class="input-group-prepend">
+                <div class="input-group-text bg-white">
+                    <i class="fa fa-user-plus" [class.green-icon]="this.gestionInspeccionService.TecnicoRequerido.valid" [class.red-icon]="this.gestionInspeccionService.TecnicoRequerido.invalid && this.gestionInspeccionService.TecnicoRequerido.touched"></i>
+                </div>
+
+            </div>
+
+            <input name="TecnicoRequerido" formControlName="TecnicoRequerido" class="form-control" placeholder="Tecnico Requerido">
+
+        </div>
+        <!--Mensajes de error-->
+
+        <div *ngIf="this.gestionInspeccionService.TecnicoRequerido.invalid && (this.gestionInspeccionService.TecnicoRequerido.touched || this.gestionInspeccionService.TecnicoRequerido.dirty)" class="alert alert-danger">
+
+            <div *ngIf="this.gestionInspeccionService.TecnicoRequerido.hasError('required')">
+                El tecnico requerido es Obligatorio
+            </div>
+            <div *ngIf="this.gestionInspeccionService.TecnicoRequerido.hasError('pattern')">
+                El tecnico requerido solo deben contener letras
+            </div>
+
+        </div>
+
+    </div>
+
+    <!--Herramientas y Equipos-->
+    <div class="form-group">
+        <div class="input-group">
+            <div class="input-group-prepend">
+                <div class="input-group-text bg-white">
+                    <i class="fa fa-wrench" [class.green-icon]="this.gestionInspeccionService.HerramientasEquipos.valid" [class.red-icon]="this.gestionInspeccionService.HerramientasEquipos.invalid && this.gestionInspeccionService.HerramientasEquipos.touched"></i>
+                </div>
+
+            </div>
+
+            <input name=HerramientasEquipos formControlName="HerramientasEquipos" class="form-control" placeholder="Herramientas y Equipos">
+
+        </div>
+        <!--Mensajes de error-->
+
+        <div *ngIf="this.gestionInspeccionService.HerramientasEquipos.invalid && (this.gestionInspeccionService.HerramientasEquipos.touched || this.gestionInspeccionService.HerramientasEquipos.dirty)" class="alert alert-danger">
+
+            <div *ngIf="this.gestionInspeccionService.HerramientasEquipos.hasError('required')">
+                Las herramientas y equipos son requeridos
+            </div>
+            <div *ngIf="this.gestionInspeccionService.HerramientasEquipos.hasError('pattern')">
+                Las herramientas y equipos solo deben contener letras
+            </div>
+
+        </div>
+
+    </div>
+
+    <!--Largo-->
+    <div class="form-group">
+        <div class="input-group">
+            <div class="input-group-prepend">
+                <div class="input-group-text bg-white">
+                    <i class="fa fa-plus-square" [class.green-icon]="this.gestionInspeccionService.Largo.valid" [class.red-icon]="this.gestionInspeccionService.Largo.invalid && this.gestionInspeccionService.Largo.touched"></i>
+                </div>
+
+            </div>
+
+            <input name="Largo" formControlName="Largo" class="form-control" placeholder="Largo(M)">
+
+        </div>
+        <!--Mensajes de error-->
+
+        <div *ngIf="this.gestionInspeccionService.Largo.invalid && (this.gestionInspeccionService.Largo.touched || this.gestionInspeccionService.Largo.dirty)" class="alert alert-danger">
+
+            <div *ngIf="this.gestionInspeccionService.Largo.hasError('required')">
+                Las medidas de largo(M) son requeridas
+            </div>
+            <div *ngIf="this.gestionInspeccionService.Largo.hasError('maxlength')">
+                Las medidas de largo(M) debe tener maximo 20 caracteres
+            </div>
+
+            <div *ngIf="this.gestionInspeccionService.Largo.hasError('pattern')">
+                Las medidas de largo(M) debe contener solo numeros
+            </div>
+        </div>
+
+    </div>
+
+    <!--Ancho-->
+    <div class="form-group">
+        <div class="input-group">
+            <div class="input-group-prepend">
+                <div class="input-group-text bg-white">
+                    <i class="fa fa-plus-square" [class.green-icon]="this.gestionInspeccionService.Ancho.valid" [class.red-icon]="this.gestionInspeccionService.Ancho.invalid && this.gestionInspeccionService.Ancho.touched"></i>
+                </div>
+
+            </div>
+
+            <input name="Ancho" formControlName="Ancho" class="form-control" placeholder="Ancho(M)">
+
+        </div>
+        <!--Mensajes de error-->
+
+        <div *ngIf="this.gestionInspeccionService.Ancho.invalid && (this.gestionInspeccionService.Ancho.touched || this.gestionInspeccionService.Ancho.dirty)" class="alert alert-danger">
+
+            <div *ngIf="this.gestionInspeccionService.Ancho.hasError('required')">
+                Las medidas de Ancho(M) son requeridas
+            </div>
+            <div *ngIf="this.gestionInspeccionService.Ancho.hasError('maxlength')">
+                Las medidas de Ancho(M) debe tener maximo 20 caracteres
+            </div>
+
+            <div *ngIf="this.gestionInspeccionService.Ancho.hasError('pattern')">
+                Las medidas de Ancho(M) debe contener solo numeros
+            </div>
+
+        </div>
+
+    </div>
+
+    <!--Fondo-->
+    <div class="form-group">
+        <div class="input-group">
+            <div class="input-group-prepend">
+                <div class="input-group-text bg-white">
+                    <i class="fa fa-plus-square" [class.green-icon]="this.gestionInspeccionService.Fondo.valid" [class.red-icon]="this.gestionInspeccionService.Fondo.invalid && this.gestionInspeccionService.Fondo.touched"></i>
+                </div>
+
+            </div>
+
+            <input name="Fondo" formControlName="Fondo" class="form-control" placeholder="Fondo(M)">
+
+        </div>
+        <!--Mensajes de error-->
+
+        <div *ngIf="this.gestionInspeccionService.Fondo.invalid && (this.gestionInspeccionService.Fondo.touched || this.gestionInspeccionService.Fondo.dirty)" class="alert alert-danger">
+
+            <div *ngIf="this.gestionInspeccionService.Fondo.hasError('required')">
+                Las medidas de Fondo(M) son requeridas
+            </div>
+            <div *ngIf="this.gestionInspeccionService.Fondo.hasError('maxlength')">
+                Las medidas de Fondo(M) debe tener maximo 20 caracteres
+            </div>
+
+            <div *ngIf="this.gestionInspeccionService.Fondo.hasError('pattern')">
+                Las medidas de Fondo(M) debe contener solo numeros
+            </div>
+
+        </div>
+
+    </div>
+
+    <!--Diametro-->
+    <div class="form-group">
+        <div class="input-group">
+            <div class="input-group-prepend">
+                <div class="input-group-text bg-white">
+                    <i class="fa fa-plus-square" [class.green-icon]="this.gestionInspeccionService.Diametro.valid" [class.red-icon]="this.gestionInspeccionService.Diametro.invalid && this.gestionInspeccionService.Diametro.touched"></i>
+                </div>
+
+            </div>
+
+            <input name="Diametro" formControlName="Diametro" class="form-control" placeholder="Diametro(M)">
+
+        </div>
+        <!--Mensajes de error-->
+
+        <div *ngIf="this.gestionInspeccionService.Diametro.invalid && (this.gestionInspeccionService.Diametro.touched || this.gestionInspeccionService.Diametro.dirty)" class="alert alert-danger">
+
+            <div *ngIf="this.gestionInspeccionService.Diametro.hasError('required')">
+                Las medidas de Diametro(M) son requeridas
+            </div>
+            <div *ngIf="this.gestionInspeccionService.Diametro.hasError('maxlength')">
+                Las medidas de Diametro(M) debe tener maximo 20 caracteres
+            </div>
+
+            <div *ngIf="this.gestionInspeccionService.Diametro.hasError('pattern')">
+                Las medidas de Diametro(M) debe contener solo numeros
+            </div>
+
+        </div>
+
+    </div>
+
+    <!--Capacidad-->
+    <div class="form-group">
+        <div class="input-group">
+            <div class="input-group-prepend">
+                <div class="input-group-text bg-white">
+                    <i class="fa fa-plus-square" [class.green-icon]="this.gestionInspeccionService.Capacidad.valid" [class.red-icon]="this.gestionInspeccionService.Capacidad.invalid && this.gestionInspeccionService.Capacidad.touched"></i>
+                </div>
+
+            </div>
+
+            <input name="Capacidad" formControlName="Capacidad" class="form-control" placeholder="Capacidad(M3)">
+
+        </div>
+        <!--Mensajes de error-->
+
+        <div *ngIf="this.gestionInspeccionService.Capacidad.invalid && (this.gestionInspeccionService.Capacidad.touched || this.gestionInspeccionService.Capacidad.dirty)" class="alert alert-danger">
+
+            <div *ngIf="this.gestionInspeccionService.Capacidad.hasError('required')">
+                Las medidas de Capacidad(M3) son requeridas
+            </div>
+            <div *ngIf="this.gestionInspeccionService.Capacidad.hasError('maxlength')">
+                Las medidas de Capacidad(M3) debe tener maximo 20 caracteres
+            </div>
+
+            <div *ngIf="this.gestionInspeccionService.Capacidad.hasError('pattern')">
+                Las medidas de Capacidad(M3) debe contener solo numeros
+            </div>
+
+        </div>
+    </div>
+
+    <!--Material-->
+    <div class="form-group">
+        <div class="input-group">
+            <div class="input-group-prepend">
+                <div class="input-group-text bg-white">
+                    <i class="fa fa-codepen" [class.green-icon]="this.gestionInspeccionService.Material.valid" [class.red-icon]="this.gestionInspeccionService.Material.invalid && this.gestionInspeccionService.Material.touched"></i>
+                </div>
+
+            </div>
+
+            <input name="Material" formControlName="Material" class="form-control" placeholder="Material">
+
+        </div>
+        <!--Mensajes de error-->
+
+        <div *ngIf="this.gestionInspeccionService.Material.invalid && (this.gestionInspeccionService.Material.touched || this.gestionInspeccionService.Material.dirty)" class="alert alert-danger">
+
+            <div *ngIf="this.gestionInspeccionService.Material.hasError('required')">
+                El Material es requerido
+            </div>
+            <div *ngIf="this.gestionInspeccionService.Material.hasError('pattern')">
+                El Material solo deben contener letras
+            </div>
+
+        </div>
+
+    </div>
+
+    <!--Cantidad-->
+    <div class="form-group">
+        <div class="input-group">
+            <div class="input-group-prepend">
+                <div class="input-group-text bg-white">
+                    <i class="fa fa-plus-square" [class.green-icon]="this.gestionInspeccionService.Cantidad.valid" [class.red-icon]="this.gestionInspeccionService.Cantidad.invalid && this.gestionInspeccionService.Cantidad.touched"></i>
+                </div>
+
+            </div>
+
+            <input name="Cantidad" formControlName="Cantidad" class="form-control" placeholder="Cantidad">
+
+        </div>
+        <!--Mensajes de error-->
+
+        <div *ngIf="this.gestionInspeccionService.Cantidad.invalid && (this.gestionInspeccionService.Cantidad.touched || this.gestionInspeccionService.Cantidad.dirty)" class="alert alert-danger">
+
+            <div *ngIf="this.gestionInspeccionService.Cantidad.hasError('required')">
+                La Cantidad es requerida
+            </div>
+            <div *ngIf="this.gestionInspeccionService.Cantidad.hasError('maxlength')">
+                La cantidad debe tener maximo 20 caracteres
+            </div>
+
+            <div *ngIf="this.gestionInspeccionService.Cantidad.hasError('pattern')">
+                La cantidad debe contener solo numeros
+            </div>
+
+        </div>
+
+    </div>
+
+    <!--Tecnico que realiza la inspeccion-->
+    <div class="form-group">
+        <div class="input-group">
+            <div class="input-group-prepend">
+                <div class="input-group-text bg-white">
+                    <i class="fa fa-user-circle" [class.green-icon]="this.gestionInspeccionService.TecnicoRealizaInspeccion.valid" [class.red-icon]="this.gestionInspeccionService.TecnicoRealizaInspeccion.invalid && this.gestionInspeccionService.TecnicoRealizaInspeccion.touched"></i>
+                </div>
+
+            </div>
+
+            <input name="TecnicoRealizaInspeccion" formControlName="TecnicoRealizaInspeccion" class="form-control" placeholder="Tecnico que Realiza la Inspeccion">
+
+        </div>
+        <!--Mensajes de error-->
+
+        <div *ngIf="this.gestionInspeccionService.TecnicoRealizaInspeccion.invalid && (this.gestionInspeccionService.TecnicoRealizaInspeccion.touched || this.gestionInspeccionService.TecnicoRealizaInspeccion.dirty)" class="alert alert-danger">
+
+            <div *ngIf="this.gestionInspeccionService.TecnicoRealizaInspeccion.hasError('required')">
+                El tecnico que realiza la inspeccion es requerido
+            </div>
+            <div *ngIf="this.gestionInspeccionService.TecnicoRealizaInspeccion.hasError('pattern')">
+                El nombre del tecnico que realiza la inspeccion solo deben contener letras
+            </div>
+
+        </div>
+
+    </div>
+
+    <!--Persona que acompaña la inspeccion-->
+    <div class="form-group">
+        <div class="input-group">
+            <div class="input-group-prepend">
+                <div class="input-group-text bg-white">
+                    <i class="fa fa-user-plus" [class.green-icon]="this.gestionInspeccionService.PersonaAcompanaInspeccion.valid" [class.red-icon]="this.gestionInspeccionService.PersonaAcompanaInspeccion.invalid && this.gestionInspeccionService.PersonaAcompanaInspeccion.touched"></i>
+                </div>
+
+            </div>
+
+            <input name="PersonaAcompanaInspeccion" formControlName="PersonaAcompanaInspeccion" class="form-control" placeholder="Persona que Acompaña la Inspeccion">
+
+        </div>
+        <!--Mensajes de error-->
+
+        <div *ngIf="this.gestionInspeccionService.PersonaAcompanaInspeccion.invalid && (this.gestionInspeccionService.PersonaAcompanaInspeccion.touched || this.gestionInspeccionService.PersonaAcompanaInspeccion.dirty)" class="alert alert-danger">
+
+            <div *ngIf="this.gestionInspeccionService.PersonaAcompanaInspeccion.hasError('required')">
+                La Persona que acompaña la inspección es requerida
+            </div>
+            <div *ngIf="this.gestionInspeccionService.PersonaAcompanaInspeccion.hasError('pattern')">
+                El nombre de la persona que acompaña la inspección solo deben contener letras
+            </div>
+
+        </div>
+
+    </div>
+
+    <!--Observaciones-->
+    <div class="form-group">
+        <div class="input-group">
+            <div class="input-group-prepend">
+                <div class="input-group-text bg-white">
+                    <i class="fa fa-user-plus" [class.green-icon]="this.gestionInspeccionService.Observaciones.valid" [class.red-icon]="this.gestionInspeccionService.Observaciones.invalid && this.gestionInspeccionService.Observaciones.touched"></i>
+                </div>
+
+            </div>
+
+            <input name="Observaciones" formControlName="Observaciones" class="form-control" placeholder="Observaciones">
+
+        </div>
+
+
+    </div>
+    <div class="form-group">
+        <button class="btn btn-success btn-lg" [disabled]="this.gestionInspeccionService.formularioRegistroInspeccion.invalid" type="submit"> <i class="fa fa-save"></i> Guardar</button>
+    </div>
+
+</form>

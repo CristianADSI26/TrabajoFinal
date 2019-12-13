@@ -1,0 +1,314 @@
+<form [formGroup]="this.gestioncotizacionservice.formularioRegistroCotizacion" (ngSubmit)="onSubmit()">
+
+
+    <div class=" form-group ">
+        <div class="input-group ">
+            <div class="input-group-prepend ">
+                <div class="input-group-text bg-white ">
+                    <i class="fa fa-user-circle " [class.green-icon]="this.gestioncotizacionservice.NombreEmpresa.valid" [class.red-icon]="this.gestioncotizacionservice.NombreEmpresa.invalid && this.gestioncotizacionservice.NombreEmpresa.touched"></i>
+                </div>
+
+            </div>
+            <input type="hidden" formControlName="IdCotizacion" name="IdCotizacion">
+            <input name="NombreEmpresa" class="form-control" formControlName="NombreEmpresa" placeholder=" Nombre de la empresa *">
+        </div>
+        <div *ngIf="this.gestioncotizacionservice.NombreEmpresa.invalid && (this.gestioncotizacionservice.NombreEmpresa.touched || this.gestioncotizacionservice.NombreEmpresa.dirty)" class="alert alert-danger">
+
+            <div *ngIf="this.gestioncotizacionservice.NombreEmpresa.hasError('required')">
+                El nombre de la empresa es requerido
+            </div>
+
+            <div *ngIf="this.gestioncotizacionservice.NombreEmpresa.hasError('pattern')">
+                El nombre de la empresa debe contener solo letras
+            </div>
+
+        </div>
+
+    </div>
+
+
+
+
+    <div class=" form-group ">
+        <div class="input-group ">
+            <div class="input-group-prepend ">
+                <div class="input-group-text bg-white ">
+                    <i class="fa fa-drivers-license " [class.green-icon]="this.gestioncotizacionservice.CC_NIT.valid" [class.red-icon]="this.gestioncotizacionservice.CC_NIT.invalid && this.gestioncotizacionservice.CC_NIT.touched"></i>
+                </div>
+
+            </div>
+
+            <input name="CC_NIT" class="form-control" formControlName="CC_NIT" placeholder=" CC_NIT *">
+        </div>
+
+
+
+        <div *ngIf="this.gestioncotizacionservice.CC_NIT.invalid && (this.gestioncotizacionservice.CC_NIT.touched || this.gestioncotizacionservice.CC_NIT.dirty)" class="alert alert-danger">
+
+            <div *ngIf="this.gestioncotizacionservice.CC_NIT.hasError('required')">
+                El CC o NIT del la cotizacion es requerido
+            </div>
+
+            <div *ngIf="this.gestioncotizacionservice.CC_NIT.hasError('minlength')">
+                El CC o NIT debe tener minimo 11 caracteres
+            </div>
+
+            <div *ngIf="this.gestioncotizacionservice.CC_NIT.hasError('maxlength')">
+                El CC o NIT debe tener maximo 15 caracteres
+            </div>
+
+            <div *ngIf="this.gestioncotizacionservice.CC_NIT.hasError('pattern')">
+                El CC_NIT debe contener solo numeros
+            </div>
+
+        </div>
+
+    </div>
+
+
+
+
+
+
+    <div class=" form-group ">
+        <div class="input-group ">
+            <div class="input-group-prepend ">
+                <div class="input-group-text bg-white ">
+                    <i class="fa fa-mobile " [class.green-icon]="this.gestioncotizacionservice.NumeroTelefono.valid" [class.red-icon]="this.gestioncotizacionservice.NumeroTelefono.invalid && this.gestioncotizacionservice.NumeroTelefono.touched"></i>
+                </div>
+
+            </div>
+
+
+            <input name="NumeroTelefono" class="form-control" formControlName="NumeroTelefono" placeholder=" Numero de Telefono *">
+        </div>
+    </div>
+
+
+    <!--Mensajes de error-->
+
+    <div *ngIf="this.gestioncotizacionservice.NumeroTelefono.invalid && (this.gestioncotizacionservice.NumeroTelefono.touched || this.gestioncotizacionservice.NumeroTelefono.dirty)" class="alert alert-danger">
+
+        <div *ngIf="this.gestioncotizacionservice.NumeroTelefono.hasError('required')">
+            El teléfono en cotizacion es requerido
+        </div>
+
+        <div *ngIf="this.gestioncotizacionservice.NumeroTelefono.hasError('minlength')">
+            El telefono debe tener minimo 7 caracteres
+        </div>
+
+        <div *ngIf="this.gestioncotizacionservice.NumeroTelefono.hasError('maxlength')">
+            El telefono debe tener maximo 10 caracteres
+        </div>
+
+        <div *ngIf="this.gestioncotizacionservice.NumeroTelefono.hasError('pattern')">
+            El telefono debe contener solo numeros
+        </div>
+
+    </div>
+
+
+
+    <div class=" form-group ">
+        <div class="input-group ">
+            <div class="input-group-prepend ">
+                <div class="input-group-text bg-white ">
+                    <i class="fa fa-usd " [class.green-icon]="this.gestioncotizacionservice.ValorProducto.valid" [class.red-icon]="this.gestioncotizacionservice.ValorProducto.invalid && this.gestioncotizacionservice.ValorProducto.touched"></i>
+                </div>
+
+            </div>
+
+            <input name="ValorProducto" class="form-control" formControlName="ValorProducto" placeholder=" Valor del producto* ">
+
+        </div>
+    </div>
+    <div *ngIf="this.gestioncotizacionservice.ValorProducto.invalid && (this.gestioncotizacionservice.ValorProducto.touched || this.gestioncotizacionservice.ValorProducto.dirty)" class="alert alert-danger">
+
+        <div *ngIf="this.gestioncotizacionservice.ValorProducto.hasError('required')">
+            El Valor de Producto de la cotizacion es requerido
+        </div>
+
+        <div *ngIf="this.gestioncotizacionservice.ValorProducto.hasError('minlength')">
+            El Valor de Producto de la cotizacion debe tener minimo 11 caracteres
+        </div>
+
+        <div *ngIf="this.gestioncotizacionservice.ValorProducto.hasError('maxlength')">
+            ElValor de Producto de la cotizacion debe tener maximo 16 caracteres
+        </div>
+
+        <div *ngIf="this.gestioncotizacionservice.ValorProducto.hasError('pattern')">
+            El Valor de Producto de la cotizacion debe contener solo numeros
+        </div>
+
+    </div>
+
+
+    <div class=" form-group ">
+        <div class="input-group ">
+            <div class="input-group-prepend ">
+                <div class="input-group-text bg-white ">
+                    <i class="fa fa-product-hunt " [class.green-icon]="this.gestioncotizacionservice.NombreProducto.valid" [class.red-icon]="this.gestioncotizacionservice.NombreProducto.invalid && this.gestioncotizacionservice.NombreProducto.touched"></i>
+                </div>
+
+            </div>
+
+            <select id="NombreProducto" class="form-control" formControlName="NombreProducto" placeholder=" Nombre del producto ">
+                <option >Nombre del producto</option>
+              <option>Pozos</option>
+              <option>Trampa de grasa</option>
+              <option>Tanques de agua</option>
+                
+              </select>
+
+
+        </div>
+    </div>
+
+    <div class=" form-group ">
+        <div class="input-group ">
+            <div class="input-group-prepend ">
+                <div class="input-group-text bg-white ">
+                    <i class="fa fa-map-marker" aria-hidden="true" [class.green-icon]="this.gestioncotizacionservice.Departameto.valid" [class.red-icon]="this.gestioncotizacionservice.Departameto.invalid && this.gestioncotizacionservice.Departameto.touched"></i>
+                </div>
+
+            </div>
+
+
+            <input name="Departameto" class="form-control" formControlName="Departameto" placeholder=" Departameto * ">
+
+        </div>
+    </div>
+    <div *ngIf="this.gestioncotizacionservice.Departameto.invalid && (this.gestioncotizacionservice.Departameto.touched || this.gestioncotizacionservice.Departameto.dirty)" class="alert alert-danger">
+
+        <div *ngIf="this.gestioncotizacionservice.Departameto.hasError('required')">
+            El Departameto es requerido
+        </div>
+
+        <div *ngIf="this.gestioncotizacionservice.Departameto.hasError('pattern')">
+            El Departameto debe contener solo letras
+        </div>
+
+    </div>
+    <div class=" form-group ">
+        <div class="input-group ">
+            <div class="input-group-prepend ">
+                <div class="input-group-text bg-white ">
+                    <i class="fa fa-map-marker" aria-hidden="true" [class.green-icon]="this.gestioncotizacionservice.Municipio.valid" [class.red-icon]="this.gestioncotizacionservice.Municipio.invalid && this.gestioncotizacionservice.Municipio.touched"></i>
+                </div>
+
+            </div>
+
+            <input name="Municipio" class="form-control" formControlName="Municipio" placeholder=" Municipio * ">
+
+        </div>
+    </div>
+    <div *ngIf="this.gestioncotizacionservice.Municipio.invalid && (this.gestioncotizacionservice.Municipio.touched || this.gestioncotizacionservice.Municipio.dirty)" class="alert alert-danger">
+
+        <div *ngIf="this.gestioncotizacionservice.Municipio.hasError('required')">
+            El Municipio es requerido
+        </div>
+
+        <div *ngIf="this.gestioncotizacionservice.Municipio.hasError('pattern')">
+            El Municipio debe contener solo letras
+        </div>
+
+    </div>
+
+    <div class=" form-group ">
+        <div class="input-group ">
+            <div class="input-group-prepend ">
+                <div class="input-group-text bg-white ">
+                    <i class="fa fa-home " [class.green-icon]="this.gestioncotizacionservice.Direccion.valid" [class.red-icon]="this.gestioncotizacionservice.Direccion.invalid && this.gestioncotizacionservice.Direccion.touched"></i>
+                </div>
+
+            </div>
+
+            <input name="Direccion" class="form-control " formControlName="Direccion" placeholder=" Dirección * ">
+
+        </div>
+    </div>
+    <div *ngIf="this.gestioncotizacionservice.Direccion.invalid && (this.gestioncotizacionservice.Direccion.touched || this.gestioncotizacionservice.Direccion.dirty)" class="alert alert-danger">
+
+        <div *ngIf="this.gestioncotizacionservice.Direccion.hasError('required')">
+            La Direccion es requerida
+        </div>
+
+        <div *ngIf="this.gestioncotizacionservice.Municipio.hasError('pattern')">
+            La Direccion debe contener solo letras
+        </div>
+
+    </div>
+
+
+
+
+    <div class=" form-group ">
+        <div class="input-group ">
+            <div class="input-group-prepend ">
+                <div class="input-group-text bg-white ">
+                    <i class="fa fa-user-circle" [class.green-icon]="this.gestioncotizacionservice.NombreAsesor.valid" [class.red-icon]="this.gestioncotizacionservice.NombreAsesor.invalid && this.gestioncotizacionservice.NombreAsesor.touched"></i>
+                </div>
+
+            </div>
+
+            <input name="NombreAsesor" class="form-control" formControlName="NombreAsesor" placeholder=" Nombre de Asesor * ">
+
+        </div>
+    </div>
+    <div *ngIf="this.gestioncotizacionservice.NombreAsesor.invalid && (this.gestioncotizacionservice.NombreAsesor.touched || this.gestioncotizacionservice.NombreAsesor.dirty)" class="alert alert-danger">
+
+        <div *ngIf="this.gestioncotizacionservice.NombreAsesor.hasError('required')">
+            El Nombre del Asesor es requerido
+        </div>
+
+        <div *ngIf="this.gestioncotizacionservice.Municipio.hasError('pattern')">
+            El Nombre del Asesor debe contener solo letras
+        </div>
+
+    </div>
+
+    <div class=" form-group ">
+        <div class="input-group ">
+            <div class="input-group-prepend ">
+                <div class="input-group-text bg-white ">
+                    <i class="fa fa-at" aria-hidden="true" [class.green-icon]="this.gestioncotizacionservice.CorreoAsesor.valid" [class.red-icon]="this.gestioncotizacionservice.CorreoAsesor.invalid && this.gestioncotizacionservice.CorreoAsesor.touched"></i>
+                </div>
+
+            </div>
+
+            <input name="CorreoAsesor" class="form-control" formControlName="CorreoAsesor" placeholder=" Correo del Asesor * ">
+        </div>
+    </div>
+    <div *ngIf="this.gestioncotizacionservice.CorreoAsesor.invalid && (this.gestioncotizacionservice.CorreoAsesor.touched || this.gestioncotizacionservice.CorreoAsesor.dirty)" class="alert alert-danger">
+
+        <div *ngIf="this.gestioncotizacionservice.NombreAsesor.hasError('required')">
+            El Correo del Asesor es requerido
+        </div>
+
+        <div *ngIf="this.gestioncotizacionservice.Municipio.hasError('pattern')">
+            El Correo del Asesor debe contener solo letras
+        </div>
+    </div>
+    <div class=" form-group ">
+        <div class="input-group ">
+            <div class="input-group-prepend ">
+                <div class="input-group-text bg-white ">
+                    <i class="fa fa-comment" aria-hidden="true"></i></div>
+
+            </div>
+
+            <input name="Comentarios" class="form-control " formControlName="Comentarios" placeholder=" Comentarios ">
+
+        </div>
+
+    </div>
+
+
+
+    <div class="form-group">
+        <button class="btn btn-success btn-lg " [disabled]="this.gestioncotizacionservice.formularioRegistroCotizacion.invalid" type="submit"> <i class=" fa fa-save " ></i> Enviar</button>
+    </div>
+
+
+
+</form>

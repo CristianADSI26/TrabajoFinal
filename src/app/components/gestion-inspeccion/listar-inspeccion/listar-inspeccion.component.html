@@ -1,0 +1,75 @@
+<form>
+
+
+
+    <div class="form-group">
+        <div class="input-group">
+            <div class="input-group-text bg-white">
+                <i class="fa fa-search"></i>
+            </div>
+            <input type="text" name="filtrar" class="form-control" placeholder="Buscar" [(ngModel)]="gestionInspeccionService.filtroInspeccion">
+        </div>
+    </div>
+
+</form>
+<table class="table table-hover">
+    <thead>
+        <tr>
+            <th scope="col">Nombre</th>
+            <th scope="col">Apellido</th>
+            <th scope="col">DocumentoIdentificacion</th>
+            <th scope="col">Telefono</th>
+            <th scope="col">Direccion</th>
+            <th scope="col">Municipio</th>
+            <th scope="col">Producto</th>
+            <th scope="col">PlantaElectrica</th>
+            <th scope="col">TipoVehiculo</th>
+            <th scope="col">CondicionesTerreno</th>
+            <th scope="col">ConexionesElectricas</th>
+            <th scope="col">TecnicoRequerido</th>
+            <th scope="col">HerramientasEquipos</th>
+            <th scope="col">largo</th>
+            <th scope="col">Ancho</th>
+            <th scope="col">Fondo</th>
+            <th scope="col">Diametro</th>
+            <th scope="col">Capacidad</th>
+            <th scope="col">Material</th>
+            <th scope="col">Cantidad</th>
+            <th scope="col">TecnicoRealizaInspeccion</th>
+            <th scope="col">PersonaAcompanaInspeccion</th>
+            <th scope="col">Observaciones</th>
+
+        </tr>
+    </thead>
+    <tbody>
+
+        <tr *ngFor="let inspeccion of gestionInspeccionService.listaInspeccion|filtroInspeccion:'Nombre':gestionInspeccionService.filtroInspeccion">
+            <td (click)="llenarFormularioInspeccion(inspeccion)">{{inspeccion.Nombre}}</td>
+            <td (click)="llenarFormularioInspeccion(inspeccion)">{{inspeccion.Apellido}}</td>
+            <td (click)="llenarFormularioInspeccion(inspeccion)">{{inspeccion.DocumentoIdentificacion}}</td>
+            <td (click)="llenarFormularioInspeccion(inspeccion)">{{inspeccion.Telefono}}</td>
+            <td (click)="llenarFormularioInspeccion(inspeccion)">{{inspeccion.Direccion}}</td>
+            <td (click)="llenarFormularioInspeccion(inspeccion)">{{inspeccion.Municipio}}</td>
+            <td (click)="llenarFormularioInspeccion(inspeccion)">{{inspeccion.Producto}}</td>
+            <td (click)="llenarFormularioInspeccion(inspeccion)">{{inspeccion.PlantaElectrica}}</td>
+            <td (click)="llenarFormularioInspeccion(inspeccion)">{{inspeccion.TipoVehiculo}}</td>
+            <td (click)="llenarFormularioInspeccion(inspeccion)">{{inspeccion.CondicionesTerreno}}</td>
+            <td (click)="llenarFormularioInspeccion(inspeccion)">{{inspeccion.ConexionesElectricas}}</td>
+            <td (click)="llenarFormularioInspeccion(inspeccion)">{{inspeccion.TecnicoRequerido}}</td>
+            <td (click)="llenarFormularioInspeccion(inspeccion)">{{inspeccion.HerramientasEquipos}}</td>
+            <td (click)="llenarFormularioInspeccion(inspeccion)">{{inspeccion.Largo}}</td>
+            <td (click)="llenarFormularioInspeccion(inspeccion)">{{inspeccion.Ancho}}</td>
+            <td (click)="llenarFormularioInspeccion(inspeccion)">{{inspeccion.Fondo}}</td>
+            <td (click)="llenarFormularioInspeccion(inspeccion)">{{inspeccion.Diametro}}</td>
+            <td (click)="llenarFormularioInspeccion(inspeccion)">{{inspeccion.Capacidad}}</td>
+            <td (click)="llenarFormularioInspeccion(inspeccion)">{{inspeccion.Material}}</td>
+            <td (click)="llenarFormularioInspeccion(inspeccion)">{{inspeccion.Cantidad}}</td>
+            <td (click)="llenarFormularioInspeccion(inspeccion)">{{inspeccion.TecnicoRealizaInspeccion}}</td>
+            <td (click)="llenarFormularioInspeccion(inspeccion)">{{inspeccion.PersonaAcompanaInspeccion}}</td>
+            <td (click)="llenarFormularioInspeccion(inspeccion)">{{inspeccion.Observaciones}}</td>
+            <td>
+                <i (click)="this.eliminarInspeccion(inspeccion.IdInspeccion)" class="fa fa-trash fa-lg text-danger"></i>
+            </td>
+        </tr>
+    </tbody>
+</table>

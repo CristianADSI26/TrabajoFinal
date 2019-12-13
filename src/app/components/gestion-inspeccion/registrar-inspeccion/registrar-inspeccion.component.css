@@ -16,7 +16,3 @@ input.ng-valid {
     color: #dc3545;
     /* iconos rojos*/
 }
-
-#toast-container>div {
-    opacity: 1;
-}

@@ -1,0 +1,312 @@
+<form [formGroup]="this.gestionClienteService.formularioRegistroCliente" (ngSubmit)="onSubmit()">
+
+    <div class=" form-group ">
+        <div class="input-group ">
+            <div class="input-group-prepend ">
+                <div class="input-group-text bg-white">
+                    <i class="fa fa-user-circle " [class.green-icon]="this.gestionClienteService.PrimerNombre.valid" [class.red-icon]="this.gestionClienteService.PrimerNombre.invalid && this.gestionClienteService.PrimerNombre.touched"></i>
+                </div>
+
+            </div>
+            <input type="hidden" formControlName="IdCliente" name="IdCliente">
+            <input name="PrimerNombre" class="form-control" formControlName="PrimerNombre" placeholder=" Nombre del cliente*">
+        </div>
+        <div *ngIf="this.gestionClienteService.PrimerNombre.invalid && (this.gestionClienteService.PrimerNombre.touched || this.gestionClienteService.PrimerNombre.dirty)" class="alert alert-danger">
+
+            <div *ngIf="this.gestionClienteService.PrimerNombre.hasError('required')">
+                El nombre del cliente es requerido
+            </div>
+
+            <div *ngIf="this.gestionClienteService.PrimerNombre.hasError('pattern')">
+                El nombre del cliente debe contener solo letras
+            </div>
+
+        </div>
+
+    </div>
+
+
+
+    <div class="form-group">
+        <div class="input-group">
+            <div class="input-group-prepend">
+                <div class="input-group-text bg-white">
+                    <i class="fa fa-user-circle" [class.green-icon]="this.gestionClienteService.SegundoNombre.valid" [class.red-icon]="this.gestionClienteService.SegundoNombre.invalid && this.gestionClienteService.SegundoNombre.touched"></i>
+                </div>
+
+            </div>
+            <input name="SegundoNombre" formControlName="SegundoNombre" class="form-control" placeholder="Segundo Nombre del Cliente">
+        </div>
+        <div *ngIf="this.gestionClienteService.SegundoNombre.invalid && (this.gestionClienteService.SegundoNombre.touched || this.gestionClienteService.SegundoNombre.dirty)" class="alert alert-danger">
+
+            <div *ngIf="this.gestionClienteService.SegundoNombre.hasError('pattern')">
+                El nombre del cliente debe contener solo letras
+            </div>
+
+        </div>
+    </div>
+    <!--Primer Apellido-->
+    <div class="form-group">
+        <div class="input-group">
+            <div class="input-group-prepend">
+                <div class="input-group-text bg-white">
+                    <i class="fa fa-user-circle" [class.green-icon]="this.gestionClienteService.PrimerApellido.valid" [class.red-icon]="this.gestionClienteService.PrimerApellido.invalid && this.gestionClienteService.PrimerApellido.touched"></i>
+                </div>
+
+            </div>
+
+            <input name="PrimerApellido" formControlName="PrimerApellido" class="form-control" placeholder="Primer Apellido ">
+
+        </div>
+
+        <!--Mensajes de error-->
+
+        <div *ngIf="this.gestionClienteService.PrimerApellido.invalid && (this.gestionClienteService.PrimerApellido.touched || this.gestionClienteService.PrimerApellido.dirty)" class="alert alert-danger">
+
+            <div *ngIf="this.gestionClienteService.PrimerApellido.hasError('required')">
+                El apellido del cliente es requerido
+            </div>
+            <div *ngIf="this.gestionClienteService.PrimerApellido.hasError('pattern')">
+                El apellido del cliente debe ser solo letras
+            </div>
+
+        </div>
+
+    </div>
+    <div class="form-group">
+        <div class="input-group">
+            <div class="input-group-prepend">
+                <div class="input-group-text bg-white">
+                    <i class="fa fa-user-circle" [class.green-icon]="this.gestionClienteService.SegundoApellido.valid" [class.red-icon]="this.gestionClienteService.SegundoApellido.invalid && this.gestionClienteService.SegundoApellido.touched"></i>
+                </div>
+
+            </div>
+            <input name="SegundoApellido" formControlName="SegundoApellido" class="form-control" placeholder="Segundo Apellido del Cliente">
+
+        </div>
+        <div *ngIf="this.gestionClienteService.SegundoApellido.invalid && (this.gestionClienteService.SegundoApellido.touched || this.gestionClienteService.SegundoApellido.dirty)" class="alert alert-danger">
+
+            <div *ngIf="this.gestionClienteService.SegundoApellido.hasError('pattern')">
+                El apellido del cliente debe contener solo letras
+            </div>
+
+        </div>
+    </div>
+    <div class="row">
+
+        <!--TipoDocumento-->
+
+        <div class="form-group col-md-6">
+            <div class="input-group">
+                <div class="input-group-prepend">
+                    <div class="input-group-text bg-white">
+                        <i class="fa fa-drivers-license" [class.green-icon]="this.gestionClienteService.TipoDocumento.valid" [class.red-icon]="this.gestionClienteService.TipoDocumento.invalid && this.gestionClienteService.TipoDocumento.touched"></i>
+                    </div>
+                    <select id="TipoDocumento" class="form-control" formControlName="TipoDocumento" placeholder="Tipo Documento">
+                        <option selected>Tipo Documento</option>
+                        <option>CC</option>
+                        <option>NIT</option>
+                      </select>
+                </div>
+
+                <div *ngIf="this.gestionClienteService.TipoDocumento.invalid && (this.gestionClienteService.TipoDocumento.touched || this.gestionClienteService.TipoDocumento.dirty)" class="alert alert-danger">
+
+                    <div *ngIf="this.gestionClienteService.TipoDocumento.hasError('required')">
+                        El Tipo Documento es requerido
+                    </div>
+
+
+                </div>
+            </div>
+
+        </div>
+
+        <!--NumeroDocumento-->
+
+        <div class="form-group col-md-6">
+            <div class="input-group">
+                <div class="input-group-prepend">
+                    <div class="input-group-text bg-white">
+                        <i class="fa fa-drivers-license" [class.green-icon]="this.gestionClienteService.NumeroDocumento.valid" [class.red-icon]="this.gestionClienteService.NumeroDocumento.invalid && this.gestionClienteService.NumeroDocumento.touched"></i>
+                    </div>
+
+                </div>
+
+                <input name="NumeroDocumento" formControlName="NumeroDocumento" class="form-control" placeholder="NumeroDocumento">
+
+            </div>
+
+            <!--Mensajes de error-->
+
+            <div *ngIf="this.gestionClienteService.NumeroDocumento.invalid && (this.gestionClienteService.NumeroDocumento.touched || this.gestionClienteService.NumeroDocumento.dirty)" class="alert alert-danger">
+
+                <div *ngIf="this.gestionClienteService.NumeroDocumento.hasError('required')">
+                    El Numero Documento es requerido
+                </div>
+
+                <div *ngIf="this.gestionClienteService.NumeroDocumento.hasError('minlength')">
+                    El Numero Documento debe tener minimo 7 caracteres
+                </div>
+
+                <div *ngIf="this.gestionClienteService.NumeroDocumento.hasError('maxlength')">
+                    El Numero Documentodebe tener maximo 15 caracteres
+                </div>
+
+                <div *ngIf="this.gestionClienteService.NumeroDocumento.hasError('pattern')">
+                    El Numero Documento debe contener solo numeros
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+
+
+
+    <div class="row">
+
+        <!--genero-->
+
+        <div class="form-group col-md-6">
+            <div class="input-group">
+                <div class="input-group-prepend">
+                    <div class="input-group-text bg-white">
+                        <i class="fa fa-intersex" [class.green-icon]="this.gestionClienteService.Genero.valid" [class.red-icon]="this.gestionClienteService.Genero.invalid && this.gestionClienteService.Genero.touched"></i>
+                    </div>
+
+                </div>
+
+                <select id="Genero" class="form-control" formControlName="Genero" placeholder="Genero">
+          <option selected>Genero</option>
+          <option>Masculino</option>
+          <option>Femenino</option>
+        </select>
+            </div>
+
+            <!--Mensajes de error-->
+
+            <div *ngIf="this.gestionClienteService.Genero.invalid && (this.gestionClienteService.Genero.touched || this.gestionClienteService.Genero.dirty)" class="alert alert-danger">
+
+                <div *ngIf="this.gestionClienteService.Genero.hasError('required')">
+                    El genero es requerido
+                </div>
+                <div *ngIf="this.gestionClienteService.Genero.hasError('pattern')">
+                    El genero debe ser solo letras
+                </div>
+
+            </div>
+
+        </div>
+
+        <!--Email-->
+
+        <div class="form-group col-md-6">
+            <div class="input-group">
+                <div class="input-group-prepend">
+                    <div class="input-group-text bg-white">
+                        <i class="fa fa-at" [class.green-icon]="this.gestionClienteService.Email.valid" [class.red-icon]="this.gestionClienteService.Email.invalid && this.gestionClienteService.Email.touched"></i>
+                    </div>
+
+                </div>
+
+                <input name="Email" formControlName="Email" class="form-control" placeholder="Email">
+
+            </div>
+
+            <!--Mensajes de error-->
+
+            <div *ngIf="this.gestionClienteService.Email.invalid && (this.gestionClienteService.Email.touched || this.gestionClienteService.Email.dirty)" class="alert alert-danger">
+
+                <div *ngIf="this.gestionClienteService.Email.hasError('required')">
+                    El correo electrónico empleado es requerido
+                </div>
+                <div *ngIf="this.gestionClienteService.Email.hasError('pattern')">
+                    El Email debe contener formato de correo
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+    <div class="row">
+
+        <!--Telefono-->
+
+        <div class="form-group col-md-6">
+            <div class="input-group">
+                <div class="input-group-prepend">
+                    <div class="input-group-text bg-white">
+                        <i class="fa fa-phone" [class.green-icon]="this.gestionClienteService.Telefono.valid" [class.red-icon]="this.gestionClienteService.Telefono.invalid && this.gestionClienteService.Telefono.touched"></i>
+                    </div>
+
+                </div>
+
+                <input name="Telefono" formControlName="Telefono" class="form-control" placeholder="Teléfono">
+
+            </div>
+
+            <!--Mensajes de error-->
+
+            <div *ngIf="this.gestionClienteService.Telefono.invalid && (this.gestionClienteService.Telefono.touched || this.gestionClienteService.Telefono.dirty)" class="alert alert-danger">
+
+                <div *ngIf="this.gestionClienteService.Telefono.hasError('required')">
+                    El teléfono es requerido
+                </div>
+                <div *ngIf="this.gestionClienteService.Telefono.hasError('pattern')">
+                    El telefono debe contener solo números
+                </div>
+            </div>
+
+        </div>
+        <!--Celular-->
+
+        <div class="form-group col-md-6">
+            <div class="input-group">
+                <div class="input-group-prepend">
+                    <div class="input-group-text bg-white">
+                        <i class="fa fa-phone" [class.green-icon]="this.gestionClienteService.Celular.valid" [class.red-icon]="this.gestionClienteService.Celular.invalid && this.gestionClienteService.Celular.touched"></i>
+                    </div>
+
+                </div>
+
+                <input name="Celular" formControlName="Celular" class="form-control" placeholder="Celular">
+
+            </div>
+
+            <!--Mensajes de error-->
+
+            <div *ngIf="this.gestionClienteService.Celular.invalid && (this.gestionClienteService.Celular.touched || this.gestionClienteService.Celular.dirty)" class="alert alert-danger">
+
+                <div *ngIf="this.gestionClienteService.Celular.hasError('required')">
+                    El Celular es requerido
+                </div>
+                <div *ngIf="this.gestionClienteService.Celular.hasError('pattern')">
+                    El Celular es debe contener solo números
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <!--comentarios-->
+    <div class="form-group">
+        <div class="input-group">
+            <div class="input-group-prepend">
+                <div class="input-group-text bg-white">
+                    <i class="	fa fa-list-alt" [class.green-icon]="this.gestionClienteService.Comentarios.valid" [class.red-icon]="this.gestionClienteService.Comentarios.invalid && this.gestionClienteService.Comentarios.touched"></i>
+                </div>
+
+            </div>
+
+            <textarea name="Comentarios" rows="4 " cols="73 " formControlName="Comentarios" class="form-control" placeholder="Comentarios"></textarea>
+
+        </div>
+
+    </div>
+
+    <!--Boton de guarda - modificar-->
+
+    <div class=" form-group ">
+        <button class="btn btn-success btn-lg btn-block " [disabled]="this.gestionClienteService.formularioRegistroCliente.invalid" type="submit "> <i class="fa fa-save "></i> Aceptar</button>
+    </div>
+</form>

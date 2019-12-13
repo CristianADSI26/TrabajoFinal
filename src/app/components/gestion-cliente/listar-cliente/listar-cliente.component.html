@@ -1,0 +1,47 @@
+<form>
+    <div class="form-group">
+        <div class="input-group">
+            <div class="input-group-text bg-white">
+                <i class="fa fa-search"></i>
+            </div>
+            <input type="text" name="filtrar" class="form-control" placeholder="Buscar" [(ngModel)]="gestionClienteService.filtroCliente">
+        </div>
+    </div>
+
+</form>
+<table class=" table table-hover ">
+    <thead>
+        <tr>
+            <th scope="col ">PrimerNombre</th>
+            <th scope="col ">SegundoNombre</th>
+            <th scope="col ">PrimerApellido</th>
+            <th scope="col ">SegundoApellido</th>
+            <th scope="col ">TipoDocumento</th>
+            <th scope="col ">NumeroDocumento</th>
+            <th scope="col ">Genero</th>
+            <th scope="col ">Email</th>
+            <th scope="col ">Telefono</th>
+            <th scope="col ">Celular</th>
+            <th scope="col ">Comentarios</th>
+
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let cliente of gestionClienteService.listaCliente|filtroCliente:'PrimerNombre':gestionClienteService.filtroCliente">
+            <td (click)="llenarFormularioCliente(cliente)">{{cliente.PrimerNombre}}</td>
+            <td (click)="llenarFormularioCliente(cliente)">{{cliente.SegundoNombre}}</td>
+            <td (click)="llenarFormularioCliente(cliente)">{{cliente.PrimerApellido}}</td>
+            <td (click)="llenarFormularioCliente(cliente)">{{cliente.SegundoApellido}}</td>
+            <td (click)="llenarFormularioCliente(cliente)">{{cliente.TipoDocumento}}</td>
+            <td (click)="llenarFormularioCliente(cliente)">{{cliente.NumeroDocumento}}</td>
+            <td (click)="llenarFormularioCliente(cliente)">{{cliente.Genero}}</td>
+            <td (click)="llenarFormularioCliente(cliente)">{{cliente.Email}}</td>
+            <td (click)="llenarFormularioCliente(cliente)">{{cliente.Telefono}}</td>
+            <td (click)="llenarFormularioCliente(cliente)">{{cliente.Celular}}</td>
+            <td (click)="llenarFormularioCliente(cliente)">{{cliente.Comentarios}}</td>
+            <td>
+                <i (click)="this.eliminarCliente(cliente.IdCliente) " class="fa fa-trash fa-lg text-danger "></i>
+            </td>
+
+    </tbody>
+</table>
